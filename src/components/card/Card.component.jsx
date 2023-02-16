@@ -1,8 +1,7 @@
-import React, { Component } from "react";
 import "./Card.style.css";
 
-const Card = (props) => {
-  const { name, email, id } = props.monster;
+const Card = ({ monsters }) => {
+  const { name, email, id } = monsters;
   return (
     <div className="card-container" key={id}>
       <img
@@ -13,6 +12,6 @@ const Card = (props) => {
       <p>{email}</p>
     </div>
   );
-}
+};
 
 export default Card;

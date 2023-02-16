@@ -7,15 +7,20 @@ import SearchBox from "./components/searchBox/SearchBox.component";
 const App = () => {
   const [monsters, setMonster] = useState([]);
   const [searchField, setSearchField] = useState("");
+  const [filteredMonster, setFilteredMonster] = useState(monsters);
 
   const onSearch = (event) => {
     const searchString = event.target.value.toLocaleLowerCase();
     setSearchField(searchString);
   };
 
-  const filteredMonster = monsters.filter((monster) => {
+  useEffect(() => {
+    const newFilteredMonster = monsters.filter((monster) => {
     return monster.name.toLocaleLowerCase().includes(searchField);
   });
+
+  setFilteredMonster(newFilteredMonster)
+  }, [monsters, searchField])
 
   useEffect(() => {
     console.log("componentDidMount");
